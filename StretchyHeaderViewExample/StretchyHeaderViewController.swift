@@ -49,7 +49,7 @@ class StretchyHeaderViewController: UIViewController {
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.image = UIImage(named: "HeaderImage")
-        imageView.backgroundColor = self.tableView?.backgroundColor
+        imageView.backgroundColor = tableView.backgroundColor
         self.headerImageView = imageView
         view.addSubview(imageView)
         
