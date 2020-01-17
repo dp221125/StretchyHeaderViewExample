@@ -19,6 +19,9 @@ class StretchyHeaderViewController: UIViewController {
         didSet {
             self.headerAnchor?.isActive = true
         }
+        willSet {
+            self.headerAnchor?.isActive = false
+        }
     }
 
     override func loadView() {
@@ -66,13 +69,11 @@ class StretchyHeaderViewController: UIViewController {
     
     func updateView() {
         guard let scrollView = self.tableView, let imageView = self.headerImageView else { return }
-        
-        self.headerAnchor?.isActive = false
-        
+
         if  -minHeaderHeight < scrollView.contentOffset.y {
             self.headerAnchor = imageView.heightAnchor.constraint(equalToConstant: minHeaderHeight)
         } else {
-            self.headerAnchor = imageView.heightAnchor.constraint(equalToConstant:  -scrollView.contentOffset.y)
+            self.headerAnchor = imageView.heightAnchor.constraint(equalToConstant: -scrollView.contentOffset.y)
         }
 
         scrollView.scrollIndicatorInsets = scrollView.contentInset
