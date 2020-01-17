@@ -59,13 +59,9 @@ class StretchyHeaderViewController: UIViewController {
         ])
         
         headerAnchor = imageView.heightAnchor.constraint(equalToConstant: maxHeaderHeight)
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        guard let mainScrollView = self.tableView,
-            let headerImageView = self.headerImageView else { return }
-        mainScrollView.contentInset.top = headerImageView.frame.height
-        mainScrollView.contentOffset.y = -headerImageView.frame.height
+        
+        tableView.contentInset.top = maxHeaderHeight
+        tableView.contentOffset.y = -maxHeaderHeight
     }
     
     func updateView() {
